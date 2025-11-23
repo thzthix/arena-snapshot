@@ -48,10 +48,7 @@ void* arena_alloc(Arena *arena, size_t size, size_t align){
         return NULL;
     }
     size_t new_offset = aligned_offset + size;
-    if(new_offset < aligned_offset){ 
-        return NULL;
-    }
-    if(new_offset>arena->capacity){
+    if(new_offset < aligned_offset || new_offset>arena->capacity){ 
         return NULL;
     }
     arena-> offset = new_offset;
