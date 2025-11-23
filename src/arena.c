@@ -56,7 +56,7 @@ void* arena_alloc(Arena *arena, size_t size, size_t align){
     return ptr;
 }
 void* arena_alloc_guarded(Arena *arena, size_t size, size_t align){
-    size_t total_size = sizeof(GuardHeader)+ size + ARENA_GUARD_SIZE;
+    size_t total_size = sizeof(GuardHeader)+ size + 2*ARENA_GUARD_SIZE;
     void* raw_ptr = arena_alloc(arena, total_size, align);
     if(!raw_ptr){
         return NULL;
